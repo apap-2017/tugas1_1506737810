@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<nav th:replace = "fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<h1 class="page-header">Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h1>
+		<p class="blockquote">Selamat datang di Sistem Informasi Kependudukan Online Provisin DKI Jakarta</p>
+		<h3>Lihat Data Penduduk Berdasarkan NIK</h3>
+		<form action="/penduduk" method="get">
+			<div>
+				<label for="nik">Masukkan Nomor Induk Kependudukan</label><br /><input type="text" name="nik" required="required"/>
+			</div><br/>
+			<div>
+				<button class="btn btn-info" type="submit">Lihat</button>
+			</div>
+		</form>
+		<h3>Lihat Data Keluarga Berdasarakan NKK</h3>
+		<form action="/keluarga" method="get">
+			<div>
+				<label for="nkk">Masukan Nomor Kartu Keluarga</label><br /><input type="text" name="nkk" required="required"/>
+			</div><br/>
+			<div>
+				<button type="submit" class="btn btn-info">Lihat</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
+

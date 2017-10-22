@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Tambah Penduduk</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<nav th:replace = "fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<h1 class="page-header"><b>Tambah Penduduk</b></h1>
+	
+		<form action="/penduduk/tambah" method="post" th:object="${penduduk}" >
+			<div>
+				<label for="nama">Nama</label><br/> <input type="text" name="nama" th:field="*{nama}" required="required"/>
+			</div>
+			<div>
+				<label for="tempatLahir">Tempat Lahir</label><br/> <input type="text" name="tempatLahir" th:field="*{tempatLahir}" required="required" />
+			</div>
+			<div>
+				<label for="tglLahir">Tanggal Lahir Format (YYYY-MM-DD)</label><br/> <input type="text" name="tglLahir" th:field="*{tglLahir}" required="required" />
+			</div>
+			<div>
+				<label for="jenisKelamin">Jenis Kelamin</label><br/>
+				<select name="jenisKelamin" th:field="*{jenisKelamin}">
+					<option value="0">Pria</option>
+					<option value="1">Wanita</option>
+				</select>
+			</div>
+				<label for="isWNI">Kewarganegaraan</label><br/>
+				<select name="isWNI" th:field="*{isWNI}">
+					<option value="1">WNI</option>
+					<option value="0">WNA</option>
+				</select>
+			<div>
+				<label for="idKeluarga">ID Keluarga</label><br/> <input type="text" name="idKeluarga" th:field="*{idKeluarga}" required="required"/>
+			</div>
+			<div>
+				<label for="agama">Agama</label><br/> <input type="text" name="agama" th:field="*{agama}" required="required" />
+			</div>
+			<div>
+				<label for="pekerjaan">Pekerjaan</label><br/> <input type="text" name="pekerjaan" th:field="*{pekerjaan}" required="required" />
+			</div>
+			<div>
+				<label for="statusPerkawinan">Status Perkawinan</label><br/>
+				<select name="statusPerkawinan" th:field="*{statusPerkawinan}" >
+					<option value="Kawin">Kawin</option>
+					<option value="Belum Kawin">Belum Kawin</option>
+				</select>
+			</div>
+			<div>
+				<label for="statusDlmKeluarga">Status Dalam Keluarga</label><br/>
+				<select name="statusDlmKeluarga" th:field="*{statusDlmKeluarga}" >
+					<option value="Anak">Anak</option>
+					<option value="Kepala Keluarga">Kepala Keluarga</option>
+					<option value="Istri">Istri</option>
+					<option value="Pembantu">Pembantu</option>
+					<option value="Famili Lain">Famili Lain</option>
+				</select>
+			</div>
+			<div>
+				<label for="golonganDarah">Golongan Darah</label><br/>
+				<select name="golonganDarah" th:field="*{golonganDarah}" >
+					<option value="A-">A-</option>
+					<option value="A+">A+</option>
+					<option value="B-">B-</option>
+					<option value="B+">B+</option>
+					<option value="AB-">AB-</option>
+					<option value="AB+">AB+</option>
+					<option value="O-">O-</option>
+					<option value="O+">O+</option>
+				</select>
+			</div>
+			<div>
+				<label for="isWafat">Status Kematian</label><br/>
+				<select name="isWafat" th:field="*{isWafat}" >
+					<option value="0">Hidup</option>
+					<option value="1">Wafat</option>
+				</select>
+			</div><br/>
+			<div>
+				<button class="btn btn-info" type="submit" name="action" value="save">Tambah</button>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>

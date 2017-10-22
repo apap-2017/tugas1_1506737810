@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>View Penduduk In Area</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>	
+	<nav th:replace = "fragments/fragment :: navbar"></nav>
+	<div class="container" th:if="${namaKota == null}">
+		<h3>Lihat Data Penduduk Berdasarkan Kota</h3>
+		<form action="/penduduk/cari" method="get">
+			<label for="kt">Kota/Kabupaten</label><br/>
+			<select name="kt">
+				<option th:each="kota: ${listKota}" th:value="${kota.idKota}" th:text="${kota.namaKota}">Tidak ditemukan</option>
+			</select>
+			<div><br/>
+				<button class="btn btn-info" type="submit">Lihat</button>
+			</div>
+		</form>
+	</div>
+	
+	<div class="container" th:if="${namaKota != null and namaKecamatan == null}">
+		<h3>Lihat Data Penduduk Berdasarkan Kecamatan di <span th:text="${namaKota}" th:remove="tag"></span></h3>
+		<form action="/penduduk/cari" method="get">
+			<label for="kt">Kota/Kabupaten</label><br/>
+			<input type="hidden" name="kt" th:value="${idKota}"/>
+			<select disabled="disabled" name="kt" th:value="${idKota}">
+				<option th:value="${idKota}" th:text="${namaKota}" selected="selected"> </option>
+			</select><br/>
+			<label for="kc">Kecamatan</label><br/>
+			<select name="kc">
+				<option th:each="kecamatan: ${listKecamatan}" th:value="${kecamatan.idKecamatan}" th:text="${kecamatan.namaKecamatan}">Tidak ditemukan</option>
+			</select>
+			<div><br/>
+				<button class="btn btn-info" type="submit">Lihat</button>
+			</div>
+		</form>
+	</div>
+	
+	<div class="container" th:if="${namaKecamatan != null and namaKelurahan == null}">
+		<h3>Lihat Data Penduduk Berdasarkan Kelurahan di <span th:text="${namaKota}" th:remove="tag"></span>, 
+		Kecamatan <span th:text="${namaKecamatan}" th:remove="tag"></span></h3>
+		<form action="/penduduk/cari" method="get">
+			<label for="kt">Kota/Kabupaten</label><br/>
+			<input type="hidden" name="kt" th:value="${idKota}"/>
+			<input type="hidden" name="kc" th:value="${idKecamatan}"/>
+			<select disabled="disabled" name="kt" th:value="${idKota}">
+				<option th:value="${idKota}" th:text="${namaKota}" selected="selected"> </option>
+			</select><br/>
+			<label for="kc">Kecamatan</label><br/>
+			<select disabled="disabled" name="kc" th:value="${idKecamatan}">
+				<option th:value="${idKecamatan}" th:text="${namaKecamatan}" selected="selected"> </option>
+			</select><br/>
+			<label for="kl">Kelurahan</label><br/>
+			<select name="kl">
+				<option th:each="kelurahan: ${listKelurahan}" th:value="${kelurahan.id}" th:text="${kelurahan.namaKelurahan}">Tidak ditemukan</option>
+			</select>
+			<div><br/>
+				<button class="btn btn-info" type="submit">Lihat</button>
+			</div>
+		</form>
+	</div>
+	
+	<div class="container" th:if="${namaKelurahan != null}">
+		<h3>Lihat Data Penduduk Berdasarkan Kelurahan di <span th:text="${namaKota}" th:remove="tag"></span>, 
+		Kecamatan <span th:text="${namaKecamatan}" th:remove="tag"></span>, Kelurahan <span th:text="${namaKelurahan}" th:remove="tag"></span></h3>
+	</div>
+</body>
+</html>
+

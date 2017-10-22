@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ubah Data Penduduk</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<nav th:replace = "fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<h1 class="page-header">Ubah Penduduk</h1>
+	
+		<form th:action="${penduduk.nik}" method="post" th:object="${penduduk}" >
+			<div>
+				<label for="nama">Nama</label><br/> <input type="text" name="nama" value="${penduduk.nama}" th:field="*{nama}" />
+			</div>
+			<div>
+				<label for="tempatLahir">Tempat Lahir</label><br/> <input type="text" name="tempatLahir" value="${penduduk.tempatLahir}" th:field="*{tempatLahir}" />
+			</div>
+			<div>
+				<label for="tglLahir">Tanggal Lahir</label><br/> <input type="text" name="tglLahir" value="${penduduk.tglLahir}" th:field="*{tglLahir}" />
+			</div>
+			<div>
+				<label for="jenisKelamin">Jenis Kelamin</label><br/>
+				<select name="jenisKelamin" th:value="${penduduk.jenisKelamin}" th:field="*{jenisKelamin}">
+					<option value="0">Pria</option>
+					<option value="1">Wanita</option>
+				</select>
+			</div>
+				<label for="isWNI">Kewarganegaraan</label><br/>
+				<select name="isWNI" th:value="${penduduk.isWNI}" th:field="*{isWNI}">
+					<option value="1">WNI</option>
+					<option value="0">WNA</option>
+				</select>
+			<div>
+				<label for="idKeluarga">ID Keluarga</label><br/> <input type="text" name="idKeluarga" value="${penduduk.idKeluarga}" th:field="*{idKeluarga}" />
+			</div>
+			<div>
+				<label for="agama">Agama</label><br/> <input type="text" name="agama" value="${penduduk.agama}" th:field="*{agama}" />
+			</div>
+			<div>
+				<label for="pekerjaan">Pekerjaan</label><br/> <input type="text" name="pekerjaan" value="${penduduk.pekerjaan}" th:field="*{pekerjaan}" />
+			</div>
+			<div>
+				<label for="statusPerkawinan">Status Perkawinan</label><br/>
+				<select name="statusPerkawinan" th:value="${penduduk.statusPerkawinan}" th:field="*{statusPerkawinan}" >
+					<option value="Kawin">Kawin</option>
+					<option value="Belum Kawin">Belum Kawin</option>
+				</select>
+			</div>
+			<div>
+				<label for="statusDlmKeluarga">Status Dalam Keluarga</label><br/>
+				<select name="statusDlmKeluarga" th:value="${penduduk.statusDlmKeluarga}" th:field="*{statusDlmKeluarga}" >
+					<option value="Anak">Anak</option>
+					<option value="Kepala Keluarga">Kepala Keluarga</option>
+					<option value="Istri">Istri</option>
+					<option value="Pembantu">Pembantu</option>
+					<option value="Famili Lain">Famili Lain</option>
+				</select>
+			</div>
+			<div>
+				<label for="golonganDarah">GolonganDarah</label><br/>
+				<select name="golonganDarah"  th:value="${penduduk.golonganDarah}" th:field="*{golonganDarah}" >
+					<option value="A-">A-</option>
+					<option value="A+">A+</option>
+					<option value="B-">B-</option>
+					<option value="B+">B+</option>
+					<option value="AB-">AB-</option>
+					<option value="AB+">AB+</option>
+					<option value="O-">O-</option>
+					<option value="O+">O+</option>
+				</select>
+			</div>
+			<div>
+				<label for="isWafat">Status Kematian</label><br/>
+				<input name="isWafat" type="hidden" th:value="${penduduk.isWafat}" th:field="*{isWafat}"></input>
+				<select name="isWafat" disabled="disabled" th:value="${penduduk.isWafat}" th:field="*{isWafat}" >
+					<option value="0">Hidup</option>
+					<option value="1">Wafat</option>
+				</select>
+			</div><br/>
+			<div>
+				<button class="btn btn-info" type="submit" name="action" value="save">Ubah</button>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>

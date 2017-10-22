@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>View Keluarga by NKK</title>
+    </head>
+    <body>
+    	<nav th:replace = "fragments/fragment :: navbar"></nav>
+    	<div class="container">
+	       	<h1 class="page-header"><b>Lihat Data Keluarga : <span th:text="${keluarga.nkk}"></span></b></h1>
+	       	<table class="table">
+			  <tbody>
+			    <tr>
+			    	<td>Nomor KK</td>
+			      	<td th:text="${keluarga.nkk}"></td>
+			    </tr>
+			    <tr>
+			    	<td>Alamat</td>
+			      	<td th:text="${keluarga.alamat}"></td>
+			    </tr>
+			    <tr>
+			    	<td>RT</td>
+			      	<td th:text="${keluarga.rt}"></td>
+			    </tr>
+			    <tr>
+			    	<td>RW</td>
+			      	<td th:text="${keluarga.rw}"></td>
+			    </tr>
+			    <tr>
+			    	<td>Kelurahan</td>
+			      	<td th:text="${keluarga.kelurahan}"></td>
+			    </tr>
+			    <tr>
+			    	<td>Kecamatan</td>
+			    	<td th:text="${keluarga.kecamatan}"></td>
+			    </tr>
+			     <tr>
+			    	<td>Kota</td>
+			    	<td th:text="${keluarga.kota}"></td>
+			    </tr>
+			  </tbody>
+			</table>
+	       	<p class="lead">Anggota Keluarga</p>
+			<table class="table">
+			  <thead class="thead-light">
+			    <tr>
+			      <th scope="col">No.</th>
+			      <th scope="col">Nama Lengkap</th>
+			      <th scope="col">NIK</th>
+			      <th scope="col">Jenis Kelamin</th>
+			      <th scope="col">Tempat Lahir</th>
+			      <th scope="col">Tanggal Lahir</th>
+			      <th scope="col">Agama</th>
+			      <th scope="col">Pekerjaan</th>
+			      <th scope="col">Status Perkawinan</th>
+			      <th scope="col">Status dalam Keluarga</th>
+			      <th scope="col">Kewarganegaraan</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr th:each="anggota,iterationStatus: ${keluarga.anggotaKeluarga}" >
+			      <td th:text="${iterationStatus.index + 1}"></td>
+			      <td th:text="${anggota.nama}">Nama</td>
+			      <td th:text="${anggota.nik}">NIK</td>
+			      <td th:text="${anggota.jenisKelamin}">Jenis Kelamin</td>
+			      <td th:text="${anggota.tempatLahir}">tempat lahir</td>
+			      <td th:text="${anggota.tglLahir}">tgl lahir</td>
+			      <td th:text="${anggota.agama}">agama</td>
+			      <td th:text="${anggota.pekerjaan}">pekerjaan</td>
+			      <td th:text="${anggota.pekerjaan}">Mark</td>
+			      <td th:text="${anggota.statusDlmKeluarga}">Mark</td>
+			      <td th:text="${anggota.isWNI}">Mark</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+    </body>
+</html>

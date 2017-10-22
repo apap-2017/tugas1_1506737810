@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css" />
+		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+		<title>View Penduduk by Area</title>
+	</head>
+	<body>
+		<nav th:replace = "fragments/fragment :: navbar"></nav>
+		<div class="container">
+			<h3>Lihat Data Penduduk Berdasarkan Kelurahan di <span th:text="${namaKota}" th:remove="tag"></span>, 
+		Kecamatan <span th:text="${namaKecamatan}" th:remove="tag"></span>, Kelurahan <span th:text="${namaKelurahan}" th:remove="tag"></span></h3>
+			<br/><br/><br/>
+			
+			<h3>Penduduk Dengan Usia Termuda</h3>
+			<table class="table">
+			    <tbody>
+			      	<tr>
+						<td>NIK</td>
+					    <td th:text="${pendudukMuda.nik}">NIK</td>
+			    	</tr>
+			    	<tr>
+						<td>Nama</td>
+					    <td th:text="${pendudukMuda.nama}">Nama</td>
+			    	</tr>
+			    	<tr>
+						<td>Tanggal Lahir</td>
+					    <td th:text="${pendudukMuda.tglLahir}">Tanggal Lahir</td>
+			    	</tr>
+			    </tbody>
+			</table>
+			<h3>Penduduk Dengan Usia Tertua</h3>
+			<table class="table">
+			    <tbody>
+			      	<tr>
+						<td>NIK</td>
+					    <td th:text="${pendudukTua.nik}">NIK</td>
+			    	</tr>
+			    	<tr>
+						<td>Nama</td>
+					    <td th:text="${pendudukTua.nama}">Nama</td>
+			    	</tr>
+			    	<tr>
+						<td>Tanggal Lahir</td>
+					    <td th:text="${pendudukTua.tglLahir}">Tanggal Lahir</td>
+			    	</tr>
+			    </tbody>
+			</table>
+			<br/><br/><br/>
+			<table id="table_id" class="display">
+			    <thead>
+			        <tr>
+			        	<th>No.</th>
+			            <th>NIK</th>
+			            <th>Nama</th>
+			            <th>Jenis Kelamin</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			      	<tr th:each="penduduk,iterationStatus: ${listPenduduk}" >
+						<td th:text="${iterationStatus.index + 1}"></td>
+					    <td th:text="${penduduk.nik}">NIK</td>
+					    <td th:text="${penduduk.nama}">Nama</td>
+					    <td th:text="${penduduk.jenisKelamin}">Jenis Kelamin</td>
+			    	</tr>
+			    </tbody>
+			</table>
+		</div>
+		<script>
+		$(document).ready( function () {
+		    $('#table_id').DataTable();
+		} );
+		</script>
+	</body>
+</html>

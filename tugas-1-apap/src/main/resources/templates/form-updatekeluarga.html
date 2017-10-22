@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Ubah Data Keluarga</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<nav th:replace = "fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<h1 class="page-header">Ubah Keluarga</h1>
+	
+		<form th:action="${keluarga.nkk}" method="post" th:object="${keluarga}" >
+			<div>
+				<label for="alamat">Alamat</label><br/> <input type="text" name="alamat" value="${keluarga.alamat}" th:field="*{alamat}" />
+			</div>
+			<div>
+				<label for="rt">RT</label><br/> <input type="text" name="rt" value="${keluarga.rt}" th:field="*{rt}" />
+			</div>
+			<div>
+				<label for="rw">RW</label><br/> <input type="text" name="rw" value="${keluarga.rw}" th:field="*{rw}" />
+			</div>
+			<div>
+				<label for="idKelurahan">ID Kelurahan</label><br/> <input type="text" name="idKelurahan" value="${keluarga.idKelurahan}" th:field="*{idKelurahan}" />
+			</div>
+			<div>
+				<label for="isTdkBerlaku">Status Berlaku</label><br/>
+				<input name="isTdkBerlaku" type="hidden" th:value="${keluarga.isTdkBerlaku}" th:field="*{isTdkBerlaku}"></input>
+				<select name="isTdkBerlaku" disabled="disabled" th:value="${keluarga.isTdkBerlaku}" th:field="*{isTdkBerlaku}">
+					<option value="0">Tidak Berlaku</option>
+					<option value="1">Berlaku</option>
+				</select>
+			</div><br/>
+			<div>
+				<button class="btn btn-info" type="submit" name="action" value="save">Ubah</button>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
